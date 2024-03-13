@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="DynamicDB" type="javax.sql.DataSource" auth="container"
+        username="sa" password="1234"
+        driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        url="jdbc:sqlserver://localhost:1433;databaseName=FRUIT_STORE"
+    />
+</Context>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/css/style.css</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DAO/Product/ProductDetailDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/header.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/PageGetServlet/SearchServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/Registration%20-%20Login%20interactive.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/sessionListener/SessionListener.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DAO/Cart/ShoppingCartDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/shop.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/FunctionalServlet/CartDeleteServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/FunctionalServlet/LogInServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DTO/Cart/ShoppingCart.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DAO/Cart/ShoppingCartItemDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/util/ConstVar.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/ViewProduct.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/css/newStyle.css</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/product_detail.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DTO/Cart/ShoppingCartItems.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/PageGetServlet/CartServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/ActiveLink.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/Registration%20-%20Login.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/home.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/DeleteCartItemFunction.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/util/util.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/util/DAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DTO/Cart/CartItemList.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DAO/Order/ShippingTypeDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/FunctionDispatchServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/PageGetServlet/ProductDetailServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DAO/User/UserAddressDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/PageGetServlet/RegistrationServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DTO/Product/ProductDetail.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/FunctionalServlet/CartAddServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/FunctionalServlet/LogoutServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/quantityControl.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/FunctionalServlet/RegisterServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/cart.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/DispatchServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/CalculatePrice.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/ServletManager/PageGetServlet/HomeServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/AddToCartFunction.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/css/Registration%20-%20Login%20styles.css</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DTO/User/SiteUser.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/src/java/DAO/User/SiteUserDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/web/js/SubmitOnReloading.js</file>
+        </group>
+        <group name="Fall2023">
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/nbproject/build-impl.xml</file>
+        </group>
+        <group name="Testing"/>
+    </open-files>
+</project-private>

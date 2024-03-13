@@ -1,0 +1,199 @@
+.green {
+    position: sticky;
+    margin: 0;
+    padding: 0;
+}
+
+.green > * {
+    margin: 0;
+    max-width: 100%;
+}
+
+.white {
+    position: sticky;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 0 20px 20px;
+}
+
+.white > * {
+    margin: 0;
+    max-width: 100%;
+}
+
+.white .navbar {
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.white .navbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1 ;
+    background-image: url("../img/background_navbar.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.4;
+    border-radius: 0 0 20px 20px;
+}
+
+.white .navbar .navbar-brand, .white .navbar .navbar-toggler {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0;
+    color: #fff !important;
+}
+
+.white .navbar a h1 {
+    font-size: 50px;
+}
+
+#navbarCollapse {
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.hero-header {
+    margin: 0 !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+.navbar-nav.mx-auto {
+    align-item: center;
+    gap: 15px;
+}
+
+#user_space {
+    margin: 1rem !important;
+}
+
+.carousel-item  {
+    height: 300px !important;
+}
+
+.fruite .fruite-img {
+    height: 250px;
+}
+
+.fruite .fruite-img img {
+    height: 100%;
+    width: auto;
+}
+
+div[class="col-md-6 col-lg-4 col-xl-3"] > form{
+}
+
+div[class="col-md-6 col-lg-4 col-xl-3"] img, div[class="col-md-6 col-lg-6 col-xl-4"] img{
+    height: auto;
+    width: auto;
+}
+
+div[class="p-4 border border-secondary border-top-0 rounded-bottom"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    height: 220px;
+}
+
+div[class="d-flex justiry-content-between flex-lg-wrap"] p {
+    font-size: 0.9rem !important;
+}
+
+button[class="addToCartBt btn border border-secondary rounded-pill px-3 text-primary"] {
+    font-size: 0.9rem;
+}
+
+div[class="p-4 border border-secondary border-top-0 rounded-bottom"] {
+/*    padding-bottom: 0 !important;*/
+}
+
+button#search-icon-1 {
+    transition: all 0.3s ease 0s;
+}
+
+button#search-icon-1:hover {
+    background-color: #818d9c;
+    color: white;
+}
+
+.navbar-nav.mx-auto .nav-link{
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+.navbar-nav.mx-auto a.nav-item {
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+form.viewProduct {
+    cursor: pointer;
+}
+
+.message_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+}
+
+.service-item {
+    height: 420px;
+}
+
+.service-item img {
+    height: 70% !important;
+}
+
+.bigger_container > .text-center > div{
+    width: 100%;
+    height: 240px;
+}
+
+.bigger_container > .text-center > div > img{
+    height: 100%;
+}
+
+/*
+#addCartMessage {
+    position: absolute;
+    color: white;
+    top: 175%;
+    right: -130%;
+    font-size: 1rem;
+}
+
+.show {
+    display: visible !important;
+}*/
+
+@media (max-width: 1199px) {
+    .service-item {
+        height: 350px;
+    }
+    
+    #navbarCollapse {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 1)) !important;
+    }
+    
+    .navbar-nav.mx-auto {
+        text-align: right;
+    }
+    
+    #user_space {
+        flex-direction: row-reverse;
+        gap: 15px;
+    }
+    
+    .left-auto {
+        margin: 0 !important;
+        margin-left: auto !important;
+    }
+}
