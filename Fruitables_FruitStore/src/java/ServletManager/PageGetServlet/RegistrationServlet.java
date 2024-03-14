@@ -11,9 +11,7 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.sendRedirect(PageLink.);
         String state = request.getParameter("state");
-        System.out.println(state);
         request.setAttribute("state", state);
         request.getRequestDispatcher(PageLink.REGISTRATION).forward(request, response);
     }

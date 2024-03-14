@@ -12,7 +12,7 @@ public class SessionListener implements HttpSessionListener{
         System.out.println("-- HttpSessionListener#sessionCreated invoked --");
         HttpSession session = se.getSession();
         System.out.println("session id: " + session.getId());
-        session.setMaxInactiveInterval(60*60*12);//in seconds
+        session.setMaxInactiveInterval(60*60*1);//in seconds
     }
 
     @Override

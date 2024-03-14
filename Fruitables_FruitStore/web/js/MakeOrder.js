@@ -51,7 +51,7 @@ makeOrderBt.addEventListener('click', function(event) {
         for (let input of isSentInput) {
             let name = encodeURIComponent(input.name);
             let value = encodeURIComponent(input.value);
-            if (name === 'txtQuantity' && parsefloat(value) <= 0) {
+            if (name === 'txtQuantity' && parseFloat(value) <= 0) {
                 alert('Quantity must not be zero when making order, please try again!');
                 return;
             }

@@ -28,16 +28,15 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/newStyle.css" rel="stylesheet">
-    <link href="css/speech-bubble.css" rel="stylesheet">
     
 </head>
 
 
-<!-- Spinner Start 
-<div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"></div>
+ <!--?Spinner Start--> 
+<div id="spinner" class="spinner show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" role="status" style="width: 5rem; height: 5rem"></div>
 </div>
- Spinner End -->
+ <!--Spinner End--> 
 
 
 <!-- Navbar start -->
@@ -72,8 +71,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0 bg-secondary rounded-0">
                             <a href="DispatchServlet?btAction=cart" class="dropdown-item">Cart</a>
-                            <a href="chackout.jsp" class="dropdown-item">Chackout</a>
-                            <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
+                            <a href="DispatchServlet?btAction=cart" class="dropdown-item">Checkout</a>
                             <a href="404.jsp" class="dropdown-item">404 Page</a>
                         </div>
                     </div>
@@ -127,10 +125,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body d-flex align-items-center">
-                <form style="flex: 1;">
+                <form style="flex: 1;" action="DispatchServlet" method="get">
                     <div class="input-group w-75 mx-auto d-flex">
+                        <input type="hidden" name="type" value="name">
                         <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1" name="txtSearchValue" value="">
-                        <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        <button type="submit" name="btAction" value="search" id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></button>
                     </div>
                 </form>
             </div>
@@ -141,4 +140,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
+<script>
+    window.addEventListener('load', function(event) {
+        var spinner = document.querySelector('div.spinner');
+        spinner.classList.remove('show');
+        spinner.addEventListener('transitionend', () => spinner.remove() );
+    });
+</script>

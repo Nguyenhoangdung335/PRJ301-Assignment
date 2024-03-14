@@ -52,6 +52,20 @@
         <group name="Fall2023">
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Assignment_Prototype/nbproject/build-impl.xml</file>
         </group>
-        <group name="Testing"/>
+        <group name="Testing">
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/MakeOrder.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/PageGetServlet/RegistrationServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/shop.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/PageGetServlet/SearchServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/css/newStyle.css</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/sessionListener/SessionListener.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/MakeOrderServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/ChangeImgSizes.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/header.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/DeleteCartItemFunction.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/home.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/cart.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/SaveCartFunction.js</file>
+        </group>
     </open-files>
 </project-private>

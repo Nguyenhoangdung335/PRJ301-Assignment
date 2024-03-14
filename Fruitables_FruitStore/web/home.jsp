@@ -168,7 +168,7 @@
                         <div id="tab-0" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
                                 <div class="col-lg-12">
-                                    <div class="row g-4">
+                                    <div class="row g-4 justify-content-center">
                                     <c:forEach var="product" items="${productDetailList}" begin="2" step="4" end="35" varStatus="i">
                                         <div class="col-md-6 col-lg-4 col-xl-3">
                                             <form class="addToCartFunction viewProduct">
@@ -201,7 +201,7 @@
                             <div id="tab-${i.count}" class="tab-pane fade show p-0">
                                 <div class="row g-4">
                                     <div class="col-lg-12">
-                                        <div class="row g-4">
+                                        <div class="row g-4 justify-content-center">
                                         <c:forEach var="product" items="${productDetailList}" varStatus="i">
 
                                         <c:if test="${product.category == category.name}">
@@ -331,16 +331,18 @@
                     <c:forEach var="product" items="${bestSellerList}" varStatus="i" end="9">
                     <c:choose>
                         <c:when test="${i.count le 6}">
-                            <div class="col-lg-6 col-xl-4">
+                            <div class="col-lg-6 col-xl-4 smaller_container">
                                 <form class="addToCartFunction viewProduct">
                                     <input type="hidden" name="productID" value="${product.id}">
                                     <div class="p-4 rounded bg-light">
-                                        <div class="row align-items-center">
+                                        <div class="row align-items-center ">
                                             <div class="col-6">
                                                 <img src="${product.imageLink}" class="img-fluid rounded-circle w-100" alt="${product.name}">
                                             </div>
-                                            <div class="col-6">
-                                                <a href="#" class="h5">${product.name}</a>
+                                            <div class="col-6"> 
+                                                <div style="max-height: calc(2 * 1.5 * 1em); overflow: hidden;">
+                                                    <a href="#" class="h5">${product.name}</a>
+                                                </div>
                                                 <%  request.setAttribute("randStar", rand.nextInt((5 - 3) + 1) + 3);  %>
                                                 <div class="d-flex my-3">
                                                     <c:forEach begin="1" end="5" varStatus="i">
@@ -364,29 +366,32 @@
                         </c:when>
                         <c:otherwise>
                             <div class="col-md-6 col-lg-6 col-xl-3 bigger_container">
-                                <div class="text-center">
-                                    <div>
-                                        <img style="margin: auto 0;" src="${product.imageLink}" class="img-fluid rounded" alt="${product.name}">
-                                    </div>
-                                    <div class="py-4">
-                                        <a href="#" class="h5">${product.name}</a>
-                                        <%  request.setAttribute("randStar", rand.nextInt((5 - 3) + 1) + 3);  %>
-                                        <div class="d-flex my-3 justify-content-center">
-                                            <c:forEach begin="1" end="5" varStatus="i">
-                                                <c:choose>
-                                                    <c:when test="${i.count le randStar}">
-                                                        <i class="fas fa-star text-primary"></i>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <i class="fas fa-star"></i>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
+                                <form class="addToCartFunction viewProduct">
+                                    <input type="hidden" name="productID" value="${product.id}">
+                                    <div class="text-center">
+                                        <div class="imgContainer">
+                                            <img src="${product.imageLink}" class="rounded" alt="${product.name}">
                                         </div>
-                                        <h4 class="mb-3">$${product.price}</h4>
-                                        <button href="#" class=" btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
+                                        <div class="py-4">
+                                            <a href="#" class="h5">${product.name}</a>
+                                            <%  request.setAttribute("randStar", rand.nextInt((5 - 3) + 1) + 3);  %>
+                                            <div class="d-flex my-3 justify-content-center">
+                                                <c:forEach begin="1" end="5" varStatus="i">
+                                                    <c:choose>
+                                                        <c:when test="${i.count le randStar}">
+                                                            <i class="fas fa-star text-primary"></i>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <i class="fas fa-star"></i>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:forEach>
+                                            </div>
+                                            <h4 class="mb-3">$${product.price}</h4>
+                                            <button type="submit" name="btAction" value="AddToCart" class="addToCartBt btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -527,6 +532,7 @@
         <script src="js/AddToCartFunction.js" defer></script>
         <script src="js/ActiveLink.js" defer></script>
         <script src="js/ViewProduct.js" defer></script>
+        <script src="js/ChangeImgSizes.js" defer></script>
     </body>
 
 </html>

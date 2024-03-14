@@ -23,7 +23,7 @@ saveCartBt.addEventListener('click', function(event) {
         for (let input of isSentInput) {
             let name = input.name;
             let value = input.value;
-            if (name === 'txtQuantity' && parsefloat(value) <= 0) {
+            if (name === 'txtQuantity' && parseFloat(value) <= 0) {
                 alert('Quantity must not be zero when saving cart, please try again!');
                 return;
             }            

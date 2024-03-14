@@ -17,7 +17,6 @@ public class ProductDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         String productId = request.getParameter("productID");
         ProductDetail product = pdDao.get(new Object[]{productId});
-        System.out.println(product);
         request.setAttribute("product", product);
         request.getRequestDispatcher(PageLink.PRODUCT_DETAIL+"?productID="+productId).forward(request, response);
     }

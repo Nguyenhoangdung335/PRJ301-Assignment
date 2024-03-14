@@ -71,7 +71,7 @@
                                 <form action="DispatchServlet" method="get">
                                     <div class="input-group w-100 mx-auto d-flex">
                                         <input type="hidden" name="type" value="name">
-                                        <input type="search" name="txtSearchValue" value="${txtSearchValue}" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                                        <input type="search" name="txtSearchValue" value="<%= (request.getParameter("type").equals("name"))? request.getAttribute("txtSearchValue"): "" %>" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
                                         <button type="submit" name="btAction" value="search" id="search-icon-1" class="input-group-text p-3">
                                             <i class="fa fa-search"></i>
                                         </button>
@@ -181,29 +181,37 @@
 
                             <div class="col-lg-9">
                                 <div class="row g-4 justify-content-center">
-                                <c:forEach var="product" items="${searchedList}">
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <form class="addToCartFunction viewProduct">
-                                            <input type="hidden" name="productID" value="${product.id}">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="${product.imageLink}" class="img-fluid w-100 rounded-top" alt="${product.name}">
+                                    <c:choose>
+                                        <c:when test="${empty searchedList || (fn:length(searchedList) le 0)}">
+                                            <p style="font-size: 28px; text-align: center; margin: 50px; padding: 50px;">There is no entry on <span style="font-style: italic;">"${txtSearchValue}"</span>, please enter a different keyword</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach var="product" items="${searchedList}">
+                                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                                    <form class="addToCartFunction viewProduct">
+                                                        <input type="hidden" name="productID" value="${product.id}">
+                                                        <div class="rounded position-relative fruite-item">
+                                                            <div class="fruite-img">
+                                                                <img src="${product.imageLink}" class="img-fluid w-100 rounded-top" alt="${product.name}">
+                                                            </div>
+                                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.category}</div>
+                                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px; text-align: center;">Stock:<br/>${product.inStock}</div>
+                                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                                <h4>${product.name}</h4>
+                                                                <p>${product.description}</p>
+                                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                                    <p class="text-dark fs-5 fw-bold mb-0">$${product.price}/${product.productType}</p>
+                                                                    <button type="submit" name="btAction" value="AddToCart" class="addToCartBt btn border border-secondary rounded-pill px-3 text-primary">
+                                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.category}</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>${product.name}</h4>
-                                                    <p>${product.description}</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">$${product.price}/${product.productType}</p>
-                                                        <button type="submit" name="btAction" value="AddToCart" class="addToCartBt btn border border-secondary rounded-pill px-3 text-primary">
-                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </c:forEach>
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>

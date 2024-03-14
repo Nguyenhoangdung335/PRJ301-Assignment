@@ -31,21 +31,19 @@ public class SearchServlet extends HttpServlet {
                     System.out.println("Type: category");
                     pdList = pdDao.searchByCategory(new Object[]{searchValue});
                     break;
-                case "name":
-                    System.out.println("Type: name");
-                    pdList = pdDao.searchByName(new Object[]{searchValue});
-                    break;
                 case "all":
                     System.out.println("Type: all");
                     pdList = pdDao.getAll();
                     break;
+                case "name":
+                    System.out.println("Type: name");
+                    pdList = pdDao.searchByName(new Object[]{searchValue});
+                    break;
             }
-        }
+        } else 
+            pdList = pdDao.searchByName(new Object[]{searchValue});
         
         if (pdList != null) {
-            for (ProductDetail pro: pdList) {
-                System.out.println(pro);
-            }
             request.setAttribute("searchedList", pdList);
         }
         request.setAttribute("productCategoryList", pcDao.getAll());
