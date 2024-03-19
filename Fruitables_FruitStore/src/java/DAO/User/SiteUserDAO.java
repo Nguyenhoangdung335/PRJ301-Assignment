@@ -57,7 +57,8 @@ public class SiteUserDAO implements DAO<SiteUser>{
         SiteUser user;
         
         int userId = rs.getInt(userPara[0]);
-        user = new SiteUser(rs.getInt(userPara[0]), rs.getString(userPara[1]), rs.getString(userPara[2]), rs.getString(userPara[3]), rs.getString(userPara[4]), null);
+        user = new SiteUser(rs.getInt(userPara[0]), rs.getString(userPara[1]), rs.getString(userPara[2]), rs.getString(userPara[3]), rs.getString(userPara[4]));
+        user.setIsAdmin(rs.getBoolean(userPara[5]));
         
         if (rs.getString(addrPara[1]) == null || rs.getString(addrPara[1]).equals("null"))
             return user;
@@ -72,7 +73,7 @@ public class SiteUserDAO implements DAO<SiteUser>{
             counter++;
         } while (rs.next() && userId == rs.getInt(userPara[0]));
 
-        user.setShippingAddresses(addresses.toArray(new String[0]));
+        user.setShippingAddresses(addresses);
         user.setDefaultAddressIndex(mainIndex);
 
         return user;
@@ -104,8 +105,55 @@ public class SiteUserDAO implements DAO<SiteUser>{
     }
 
     @Override
-    public boolean update(SiteUser t1, String[] params) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(SiteUser user, String[] params) {
+        String[] userPara = TablePara.USER;
+        String command = String.format(
+                "UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",
+                TableName.USER, userPara[1], userPara[2], userPara[3], userPara[4], userPara[0]
+        );
+        System.out.println(command);
+        try (Connection con = util.makeConnection(); PreparedStatement stm = con.prepareStatement(command)) {
+            stm.setString(1, params[0]);
+            stm.setString(2, params[1]);
+            stm.setString(3, params[2]);
+            stm.setString(4, params[3]);
+            stm.setInt(5, user.getId());
+            
+            boolean success = stm.executeUpdate() > 0;
+            if (success) {
+                user.setUsername(params[0]);
+                user.setPassword(params[1]);
+                user.setEmail(params[2]);
+                user.setPhoneNumber(params[0]);
+            }
+            return success;
+        } catch (SQLException | NamingException ex) {
+            Logger.getLogger(SiteUserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean addAddress (String newAddr, SiteUser user) {
+        String[] addrPara = TablePara.ADDRESS;
+        String command = String.format(
+                "INSERT INTO %s (%s, %s) VALUES\n" +
+                "(?, ?);",
+                TableName.ADDRESS, addrPara[0], addrPara[1]
+        );
+        
+        try (Connection con = util.makeConnection(); PreparedStatement stm = con.prepareStatement(command)) {
+            stm.setInt(1, user.getId());
+            stm.setString(2, newAddr);
+            
+            boolean success = stm.executeUpdate()> 0;
+            if (success) {
+                user.getShippingAddresses().add(newAddr);
+            }
+            return success;
+        } catch (SQLException | NamingException ex) {
+            Logger.getLogger(SiteUserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     @Override

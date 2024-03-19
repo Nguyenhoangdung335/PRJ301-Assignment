@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAO.User.*;
 import DTO.Cart.CartItemList;
-import DTO.Cart.ShoppingCartItems;
 import DTO.User.*;
 import javax.servlet.http.HttpSession;
+import org.json.JSONObject;
 import util.ConstVar.PageLink;
 
 public class LogInServlet extends HttpServlet {
@@ -19,28 +19,32 @@ public class LogInServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        JSONObject json = new JSONObject();
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
-        
-        SiteUser user = uDao.get(new Object[]{username, password});
-        if (user != null) {
-            System.out.println(user.toString());
-            HttpSession session = request.getSession();
-            
-            session.setAttribute("user", user);
-            CartItemList cart = (CartItemList)session.getAttribute("cart");
-            if (cart == null) cart = scItemDao.convertToCartItemList(new Object[]{user.getId()});
-            
-            if (cart == null) cart = new CartItemList();
-            cart.setUserID(user.getId());
-            session.setAttribute("cart", cart);
-            
-            
-            request.getRequestDispatcher(PageLink.DISPATCH_SERVLET + "?btAction=home").forward(request, response);
-        } else {
-            String state = String.format("loginfailed");
-            request.setAttribute("state", state);
-            request.getRequestDispatcher(PageLink.DISPATCH_SERVLET + "?btAction=registration").forward(request, response);
+        try {
+            SiteUser user = uDao.get(new Object[]{username, password});
+            if (user != null) {
+                HttpSession session = request.getSession();
+
+                session.setAttribute("user", user);
+                CartItemList cart = (CartItemList)session.getAttribute("cart");
+                if (cart == null) cart = scItemDao.convertToCartItemList(new Object[]{user.getId()});
+
+                if (cart == null) cart = new CartItemList();
+                cart.setUserID(user.getId());
+                session.setAttribute("cart", cart);
+                
+                json.put("state", "success");
+            } else {
+                json.put("state", "login");
+                json.put("message", "Invalid username or password, please try again!");
+            }
+        } catch (Exception e) {
+        } finally {
+                
+            response.setContentType("application/json");
+            response.getWriter().write(json.toString());
         }
     }
 

@@ -1,5 +1,6 @@
 package sessionListener;
 
+import DAO.Product.ProductDetailDAO;
 import DTO.Cart.CartItemList;
 import DTO.User.SiteUser;
 import javax.servlet.http.HttpSession;
@@ -19,8 +20,6 @@ public class SessionListener implements HttpSessionListener{
     public void sessionDestroyed(HttpSessionEvent se) {
         HttpSession session = se.getSession();
         SiteUser user = (SiteUser)session.getAttribute("user");
-        if (user != null) {
-            CartItemList cart = (CartItemList)session.getAttribute("cart");
-        }    
+        ProductDetailDAO.closeInstance();
     }
 }

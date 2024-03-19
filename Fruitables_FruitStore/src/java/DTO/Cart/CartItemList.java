@@ -1,6 +1,5 @@
 package DTO.Cart;
 
-import DAO.Product.ProductDetailDAO;
 import DTO.Product.ProductDetail;
 import java.util.HashMap;
 import java.util.Random;
@@ -40,7 +39,7 @@ public class CartItemList extends HashMap<ProductDetail, Double>{
     public boolean addToCart(ProductDetail product) {
         if (product == null) return false;
         
-        ProductDetail search = this.containProduct(product);
+        ProductDetail search = this.getProduct(product.getid());
         if (search != null)
             this.replace(search, this.get(search) + 1);
         else 
@@ -51,7 +50,7 @@ public class CartItemList extends HashMap<ProductDetail, Double>{
     public boolean addToCart(ProductDetail product, double quantity) {
         if (product == null) return false;
         
-        ProductDetail search = this.containProduct(product);
+        ProductDetail search = this.getProduct(product.getid());
         if (search != null)
             this.replace(search, this.get(search) + quantity);
         else 
@@ -69,13 +68,28 @@ public class CartItemList extends HashMap<ProductDetail, Double>{
         return false;
     }
     
-    private ProductDetail containProduct (ProductDetail product) {
+    public Entry<ProductDetail, Double> getProductEntry (int productId) {
         for (Entry<ProductDetail, Double> entry: this.entrySet()) {
-            ProductDetail pro = entry.getKey();
-            if (pro.getid() == product.getid())
+            if (entry.getKey().getid() == productId)
+                return entry;
+        }
+        return null;
+    }
+    
+    public ProductDetail getProduct (int productId) {
+        for (ProductDetail pro: this.keySet()) {
+            if (pro.getid() == productId)
                 return pro;
         }
         return null;
+    }
+    
+    public double getProductQuantity (int productId) {
+        for (Entry<ProductDetail, Double> entry: this.entrySet()) {
+            if (entry.getKey().getid() == productId)
+                return entry.getValue();
+        }
+        return -1;
     }
     
     public double getTotalPrice () {

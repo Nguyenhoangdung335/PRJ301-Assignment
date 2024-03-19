@@ -49,17 +49,22 @@ public class DispatchServlet extends HttpServlet {
             case "search": 
                 String txtSearchValue = request.getParameter("txtSearchValue");
                 String type = request.getParameter("type");
-                System.out.println("btAction: " + PageLink.SEARCH_SERVLET + " - " + txtSearchValue);
-                
-                url = String.format("%s?type=%s&txtSearchValue=%s", PageLink.SEARCH_SERVLET, type, txtSearchValue);
+                String pageNum = request.getParameter("page");                
+                url = String.format("%s?type=%s&txtSearchValue=%s&page=%s", 
+                        PageLink.SEARCH_SERVLET, type, txtSearchValue, (pageNum == null)? 1: pageNum
+                );
                 System.out.println(url);
                 break;
             case "view":
                 String productID = request.getParameter("productID");
-                url = String.format("%s?productID=%s", PageLink.PRODUCT_DETAIL_SERVLET, productID);
+                String viewType = request.getParameter("type");
+                url = String.format("%s?productID=%s&type=%s", PageLink.PRODUCT_DETAIL_SERVLET, productID, (viewType == null)? "view": viewType);
                 break;
             case "cart": 
                 url = PageLink.CART_GET_SERVLET;
+                break;
+            case "user":
+                url = PageLink.USER_GET_SERVLET;
                 break;
             default: 
                 System.out.println("btAction: null -> HOME_SERVLET");

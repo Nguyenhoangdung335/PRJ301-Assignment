@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
@@ -18,7 +18,6 @@ import util.*;
 public class ProductDetailDAO implements DAO<ProductDetail>{
     private static ProductDetailDAO instance;
     
-    private Connection con;
     private List<ProductDetail> cachedList = null;
     private boolean hasChanged = true;
     
@@ -26,13 +25,14 @@ public class ProductDetailDAO implements DAO<ProductDetail>{
         if (instance == null) instance = new ProductDetailDAO();
         return instance;
     }
+    
+    public static boolean closeInstance () {
+        instance = null;
+        return true;
+    }
 
     public ProductDetailDAO() {
-        try {
-            con = util.makeConnection();
-        } catch (NamingException | SQLException ex) {}
     }
-    
     
     @Override
     public ProductDetail get(Object[] cond) {
@@ -48,10 +48,18 @@ public class ProductDetailDAO implements DAO<ProductDetail>{
         }
         return null;
     }
+    
+    public ProductDetail getLatest() {
+        if (hasChanged || cachedList == null) getAll();
+        LinkedList<ProductDetail> linkedList = (LinkedList<ProductDetail>)cachedList;
+        return linkedList.getLast();
+    }
 
     @Override
     public List<ProductDetail> getAll() {
+        System.out.println("getAll called");
         if (!hasChanged && cachedList != null) return cachedList;
+        
         
         String[] proItemPara = ConstVar.TablePara.PRODUCT_ITEM;
         String[] prodPara = ConstVar.TablePara.PRODUCT;
@@ -78,7 +86,7 @@ public class ProductDetailDAO implements DAO<ProductDetail>{
 
         List<ProductDetail> list = new LinkedList<>();
         
-        try (PreparedStatement stm = con.prepareStatement(command); ResultSet rs = stm.executeQuery()) {
+        try (Connection con = util.makeConnection(); PreparedStatement stm = con.prepareStatement(command); ResultSet rs = stm.executeQuery()) {
             while (rs.next()) {
                 list.add(new ProductDetail(
                         rs.getInt(proItemPara[0]), 
@@ -91,8 +99,8 @@ public class ProductDetailDAO implements DAO<ProductDetail>{
                         rs.getString(proItemPara[4])
                 ));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException | NamingException ex) {
+            Logger.getLogger(ProductDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         
@@ -108,11 +116,65 @@ public class ProductDetailDAO implements DAO<ProductDetail>{
         hasChanged = true;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public boolean create(Object[] params) {
+        hasChanged = true;
+        String command = String.format(
+                "INSERT INTO product (category_id, name, description, product_image)\n" +
+                "VALUES (?, ?, ?, ?)\n" +
+                "INSERT INTO product_item (product_id, qty_in_stock, price, product_type_id)\n" +
+                "VALUES ((SELECT TOP 1 id FROM product ORDER BY id DESC), ?, ?, ?)\n",
+                (int)params[1],(String)params[2],(String)params[3],(String)params[4],(double)params[5],(double)params[6],(int)params[7]
+                //cateID        name              des               img               stock             price             typeID        
+        );
+        try (Connection con = util.makeConnection(); PreparedStatement stm = con.prepareStatement(command)) {
+            stm.setInt(1, (int)params[1]);
+            stm.setString(2, (String)params[2]);
+            stm.setString(3, (String)params[3]);
+            stm.setString(4, (String)params[4]);
+            stm.setDouble(5, (double)params[5]);
+            stm.setDouble(6, (double)params[6]);
+            stm.setInt(7, (int)params[7]);
+            return stm.executeUpdate() > 0; 
+        } catch (SQLException | NamingException ex) {
+            Logger.getLogger(ProductDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     @Override
     public boolean update(ProductDetail t1, String[] params) {
         hasChanged = true;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public boolean updateInfo(Object[] params) {
+        hasChanged = true;
+        
+        String command = String.format(
+                "UPDATE	product\n" +
+                "SET category_id = ?, name = ?, description = ?, product_image = ?\n" +
+                "WHERE id = ?;\n" +
+                "UPDATE product_item\n" +
+                "SET qty_in_stock = ?, price = ?, product_type_id = ?\n" +
+                "WHERE product_id = ?;"
+        );
+        try (Connection con = util.makeConnection(); PreparedStatement stm = con.prepareStatement(command);) {
+            stm.setInt(1, (int)params[1]);
+            stm.setString(2, (String)params[2]);
+            stm.setString(3, (String)params[3]);
+            stm.setString(4, (String)params[4]);
+            stm.setInt(5, (int)params[0]);
+            stm.setDouble(6, (double)params[5]);
+            stm.setDouble(7, (double)params[6]);
+            stm.setInt(8, (int)params[7]);
+            stm.setInt(9, (int)params[0]);
+            return stm.executeUpdate() > 0;
+        } catch (SQLException | NamingException ex) {
+            Logger.getLogger(ProductDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
     
     public boolean updateNewQuantity (String[] productItemID, String[] quantity) {
@@ -123,13 +185,13 @@ public class ProductDetailDAO implements DAO<ProductDetail>{
                 "SET qty_in_stock -= ?\n" +
                 "WHERE id = ?;"
         );
-        try (PreparedStatement stm = con.prepareStatement(command)) {
+        try (Connection con = util.makeConnection(); PreparedStatement stm = con.prepareStatement(command)) {
             for (int i = 0; i < productItemID.length; i++) {
                 stm.setDouble(1, Double.parseDouble(quantity[i]));
                 stm.setInt(2, Integer.parseInt(productItemID[i]));
                 stm.executeUpdate();
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | NamingException ex) {
             Logger.getLogger(ProductDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
@@ -145,28 +207,60 @@ public class ProductDetailDAO implements DAO<ProductDetail>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public List<ProductDetail> searchByName (Object[] cond) {
+    public Pair<List<ProductDetail>, Integer> searchByName (String searchValue, int pageIndex, int numPerPage) {
         List<ProductDetail> resultList = new LinkedList<>();
         if (hasChanged || cachedList == null) getAll();
-        if (cachedList == null) return null;
-        String searchValue = String.valueOf(cond[0]);
+        if (cachedList == null) return new Pair<>(resultList, 0);
         
-        cachedList.stream().filter((pro) -> (StringUtil.containsIgnoreCase(pro.getName(), searchValue))).forEachOrdered((pro) -> {
-            resultList.add(pro);
-        });
-        return resultList;
+        int startIndex = numPerPage * pageIndex, endIndex = startIndex + numPerPage;
+        System.out.println("Start: " + startIndex + " End: " + endIndex);
+        int count = 0;
+        for (int i = 0, j = 0; i < cachedList.size(); i++) {
+            if (StringUtil.containsIgnoreCase(cachedList.get(i).getName(), searchValue)) {
+                count++;
+                if (j >= startIndex && j < endIndex) {
+                    resultList.add(cachedList.get(i));
+                    System.out.println(cachedList.get(i));
+                }
+                j++;
+            }
+        }
+        return new Pair<>(resultList, count);
     }
     
-    public List<ProductDetail> searchByCategory (Object[] cond) {
+    public Pair<List<ProductDetail>, Integer> searchByCategory (String cateValue, int pageIndex, int numPerPage) {
         List<ProductDetail> resultList = new LinkedList<>();
         if (hasChanged || cachedList == null) getAll();
-        if (cachedList == null) return null;
-        String cateValue = String.valueOf(cond[0]);
+        if (cachedList == null) return new Pair<>(resultList, 0);
         
-        cachedList.stream().filter((pro) -> (pro.getCategory().equalsIgnoreCase(cateValue))).forEachOrdered((pro) -> {
-            resultList.add(pro);
-        });
-        return resultList;
+        int startIndex = numPerPage * pageIndex, endIndex = startIndex + numPerPage;
+        int count = 0;
+        for (int i = 0, j = 0; i < cachedList.size(); i++) {
+            if (cachedList.get(i).getCategory().equalsIgnoreCase(cateValue)) {
+                count++;
+                if (j >= startIndex && j < endIndex) {
+                    resultList.add(cachedList.get(i));
+                }
+                j++;
+            }
+        }
+        return new Pair<>(resultList, count);
+    }
+    
+    public Pair<List<ProductDetail>, Integer> getAll (int pageIndex, int numPerPage) {
+        
+        List<ProductDetail> resultList = new LinkedList<>();
+        if (hasChanged || cachedList == null) getAll();
+        if (cachedList == null) return new Pair<>(resultList, 0);
+        
+        int startIndex = numPerPage * pageIndex, endIndex = startIndex + numPerPage;
+        for (int i = 0, j = 0; i < cachedList.size(); i++) {
+            if (j >= startIndex && j < endIndex) {
+                resultList.add(cachedList.get(i));
+            }
+            j++;
+        }
+        return new Pair<>(resultList, cachedList.size());
     }
     
     public List<ProductDetail> getBestSeller () {

@@ -8,28 +8,41 @@ public class ConstVar {
     public static final DateTimeFormatter YEARPATTERN = DateTimeFormatter.ofPattern("yyyy");
     
     public static class PageLink {
+        //--------------PAGES URL---------------
         final public static String HOME = "home.jsp";
         final public static String REGISTRATION = "Registration - Login.jsp";
         final public static String SEARCHED = "shop.jsp";
         final public static String PRODUCT_DETAIL = "product_detail.jsp";
         final public static String CART = "cart.jsp";
+        final public static String USER_INFO = "user.jsp";
         
+        //--------------MAIN DISPATCH SERVLET URL---------------
         final public static String DISPATCH_SERVLET = "DispatchServlet";
         final public static String FUNCTION_DISPATCH_SERVLET = "FunctionDispatchServlet";
         
+        //--------------PAGE GET SERVLET URL---------------
         final public static String HOME_SERVLET = "Home";
         final public static String REGISTRATION_SERVLET = "Registration";
         final public static String SEARCH_SERVLET = "Search";
         final public static String CART_GET_SERVLET = "YourCart";
         final public static String PRODUCT_DETAIL_SERVLET = "ProductDetail";
+        final public static String USER_GET_SERVLET = "UserSpace";
         
+        //--------------FUNCTIONAL SERVLET URL---------------
         final public static String CART_ADD_SERVLET = "CartAddServlet";
         final public static String CART_DELETE_SERVLET = "CartDeleteServlet";
+        final public static String CART_SAVE_SERVELT = "CartSaveServlet";
+        
         final public static String LOGIN_SERVLET = "LogInServlet";
         final public static String LOGOUT_SERVLET = "LogoutServlet";
         final public static String REGISTER_SERVLET = "RegisterServlet";
-        final public static String CART_SAVE_SERVELT = "CartSaveServlet";
+        final public static String USER_UPDATE_SERVLET = "UserSaveServlet";
+        
         final public static String ORDER_MAKE_SERVLET = "MakeOrderServlet";
+        
+        final public static String GET_PRODUCT_TYPE_SERVLET = "GetProductTypeServlet";
+        final public static String PRODUCT_UPDATE_SERVLET = "ProductUpdateServlet";
+        final public static String PRODUCT_CREATE_SERVLET = "ProductCreateServlet";
     }
     
     //<editor-fold desc="TABLES NAME" defaultstate="collapsed">
@@ -71,7 +84,7 @@ public class ConstVar {
         public static final String[] PRODUCT_CONFIG = {"id", "product_item_id", "variation_id"};
         
         //uSER TABLES
-        public static final String[] USER = {"id", "username", "password", "email", "phone_number"};
+        public static final String[] USER = {"id", "username", "password", "email", "phone_number", "isAdmin", "isActive"};
         public static final String[] ADDRESS = {"user_id", "address", "is_main_address"};
         public static final String[] PROVIDER = {"id", "name"};
         public static final String[] PAYMENT = {"id", "user_id", "provider_id", "account_number", "expiracy_date"};

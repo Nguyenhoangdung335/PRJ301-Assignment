@@ -12,37 +12,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.json.JSONException;
 import org.json.JSONObject;
+import util.CustomException.QuantityOutOfStockException;
 
 public class CartAddServlet extends HttpServlet {
     ProductDetailDAO pdDao = ProductDetailDAO.getInstance();
     
-    private void processRequest (HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("Cart add Servlet called");
+    private void processRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        JSONObject json = new JSONObject();
         HttpSession currSession = request.getSession(true);
         CartItemList cart = (CartItemList)currSession.getAttribute("cart");
         if (cart == null) cart = new CartItemList();
-    
-        int productID = Integer.parseInt(request.getParameter("productID"));
-        ProductDetail product = pdDao.get(new Object[]{productID});
-        String quantityStr = request.getParameter("txtQuantity");
-
-        if (quantityStr != null)
-            cart.addToCart(product, Double.parseDouble(quantityStr));
-        else 
-            cart.addToCart(product);
-
-        currSession.setAttribute("cart", cart);
         
         try {
-            JSONObject json = new JSONObject();
+            int productID = Integer.parseInt(request.getParameter("productID"));
+            String quantityStr = request.getParameter("txtQuantity");
+            double addedQuantity = (quantityStr == null)? 1: Double.parseDouble(quantityStr);
+            Entry<ProductDetail, Double> productEntry = cart.getProductEntry(productID);
+            ProductDetail product;
+            
+            if (productEntry != null) {
+                product = productEntry.getKey();
+                double productQuantity = productEntry.getValue();
+                if (productQuantity + addedQuantity >= product.getInStock())
+                    throw new QuantityOutOfStockException();
+            } else {
+                product = pdDao.get(new Object[]{productID});
+            }
+            cart.addToCart(product, addedQuantity);
+
+            currSession.setAttribute("cart", cart);
+            
             json.put("cartItemNum", cart.getTotalQuantity());
+            json.put("message", String.format("Successfully added %s%s of %s to cart!", addedQuantity, product.getProductType(), product.getName()));
+            
+        } catch (QuantityOutOfStockException ex) {
+            
+            json.put("message", "The amount added is larger than the quantity in stock!");
+            
+        } catch (Exception ex) {
+            
+            json.put("message", "There is an error while adding product to cart, please try again later!");
+            Logger.getLogger(CartAddServlet.class.getName()).log(Level.SEVERE, null, ex);
+            
+        } finally {
             response.setContentType("application/json");
             response.getWriter().write(json.toString());
-        } catch (IOException | JSONException | NumberFormatException ex) {
-            System.out.println("Testing exception");
-            Logger.getLogger(CartAddServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

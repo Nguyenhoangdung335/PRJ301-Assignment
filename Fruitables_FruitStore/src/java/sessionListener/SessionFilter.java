@@ -1,5 +1,6 @@
 package sessionListener;
 
+import DAO.Product.ProductDetailDAO;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;

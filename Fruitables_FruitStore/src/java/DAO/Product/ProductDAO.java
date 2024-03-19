@@ -23,6 +23,11 @@ public class ProductDAO implements DAO<Product>{
         if (instance == null) instance = new ProductDAO();
         return instance;
     }
+    
+    public static boolean closeInstance () {
+        instance = null;
+        return true;
+    }
 
     public ProductDAO() {
         try {

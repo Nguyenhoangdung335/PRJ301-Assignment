@@ -18,10 +18,6 @@ public class FunctionDispatchServlet extends HttpServlet {
         RequestDispatcher rd;
         
         switch (action) {
-            case "addtocart":
-                System.out.println("Action: " + PageLink.CART_ADD_SERVLET);
-                rd = request.getRequestDispatcher(PageLink.CART_ADD_SERVLET);
-                break;
             case "login":
                 System.out.println("Action: " + PageLink.LOGIN_SERVLET);
                 rd = request.getRequestDispatcher(PageLink.LOGIN_SERVLET);
@@ -34,6 +30,20 @@ public class FunctionDispatchServlet extends HttpServlet {
                 System.out.println("Action: " + PageLink.REGISTER_SERVLET);
                 rd = request.getRequestDispatcher(PageLink.REGISTER_SERVLET);
                 break;
+            case "addaddr":
+                System.out.println("Action: " + PageLink.USER_UPDATE_SERVLET + " adress");
+                request.setAttribute("update", "address");
+                rd = request.getRequestDispatcher(PageLink.USER_UPDATE_SERVLET);
+                break;
+            case "adduser":
+                System.out.println("Action: " + PageLink.USER_UPDATE_SERVLET + " user");
+                request.setAttribute("update", "user");
+                rd = request.getRequestDispatcher(PageLink.USER_UPDATE_SERVLET);
+                break;
+            case "addtocart":
+                System.out.println("Action: " + PageLink.CART_ADD_SERVLET);
+                rd = request.getRequestDispatcher(PageLink.CART_ADD_SERVLET);
+                break;
             case "deletecart":
                 System.out.println("Action: " + PageLink.CART_DELETE_SERVLET);
                 rd = request.getRequestDispatcher(PageLink.CART_DELETE_SERVLET);
@@ -45,7 +55,14 @@ public class FunctionDispatchServlet extends HttpServlet {
             case "makeorder":
                 System.out.println("Action: " + PageLink.ORDER_MAKE_SERVLET);
                 rd = request.getRequestDispatcher(PageLink.ORDER_MAKE_SERVLET);
-                System.out.println("Testing!" +  PageLink.ORDER_MAKE_SERVLET);
+                break;
+            case "updateproduct":
+                System.out.println("Action: " + PageLink.PRODUCT_UPDATE_SERVLET);
+                rd = request.getRequestDispatcher(PageLink.PRODUCT_UPDATE_SERVLET);
+                break;
+            case "createproduct":
+                System.out.println("Action: " + PageLink.PRODUCT_CREATE_SERVLET);
+                rd = request.getRequestDispatcher(PageLink.PRODUCT_CREATE_SERVLET);
                 break;
             default:
                 String[] path = new URL(request.getHeader("Referer")).getPath().split("/");

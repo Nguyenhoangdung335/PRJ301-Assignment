@@ -1,0 +1,48 @@
+div.container-fluid.py-5.mt-5 {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+div.row.g-4.mb-5 {
+    margin-bottom: 0 !important;
+}
+
+#product_info, #product_img {
+    margin-top: 0 !important;
+    padding: 2rem;
+}
+
+#product_img {
+    position: relative;
+}
+
+#product_info .setting_button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#product_info {
+    position: relative;
+}
+
+#reviewForm {
+    border: #747d88 solid 1px;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+@media (min-width: 992px) {
+    .col-lg-8 {
+        width: 100% !important;
+    }
+}
+
+.product_name {
+    font-size: calc(1.275rem + 0.3vw);
+}
+
+.product_price {
+    font-size: 1.25rem;
+}

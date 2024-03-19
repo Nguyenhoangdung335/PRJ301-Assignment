@@ -1,0 +1,30 @@
+.stars {
+    color: #e6e6e6;
+    font-size: 25px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.stars i.active {
+    color: #ff9c1a;
+}
+
+.stars i.one {
+  color: rgb(255, 0, 0);
+}
+ 
+.stars i.two {
+  color: rgb(255, 106, 0);
+}
+ 
+.stars i.three {
+  color: rgb(251, 255, 120);
+}
+ 
+.stars i.four {
+  color: rgb(255, 255, 0);
+}
+ 
+.stars i.five {
+  color: rgb(24, 159, 14);
+}

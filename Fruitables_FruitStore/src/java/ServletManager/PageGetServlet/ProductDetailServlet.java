@@ -16,7 +16,14 @@ public class ProductDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String productId = request.getParameter("productID");
-        ProductDetail product = pdDao.get(new Object[]{productId});
+        String type = request.getParameter("type");
+        ProductDetail product = null;
+        if (type.equals("new")) {}
+        else if ((productId == null || productId.equals("null") || productId.trim().isEmpty())) 
+            product = pdDao.getLatest();
+        else 
+            product = pdDao.get(new Object[]{productId});
+        
         request.setAttribute("product", product);
         request.getRequestDispatcher(PageLink.PRODUCT_DETAIL+"?productID="+productId).forward(request, response);
     }
