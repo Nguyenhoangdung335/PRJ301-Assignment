@@ -57,19 +57,20 @@
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/DeleteCartItemFunction.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/MakeOrder.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/DAO/User/SiteUserDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/UserScript.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/css/productDetailStyle.css</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/user.jsp</file>
-            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/UserScript.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/MakeOrderServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/ProductCreateServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/SwitchToAdmin.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/ProductUpdateServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/cart.jsp</file>
-            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/css/style.css</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/LogInServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/util/ConstVar.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/css/style.css</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/CartAddServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/GetProductTypeServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/RegisterServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/PageGetServlet/ProductDetailServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/ConfirmPassword.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/css/UserStyle.css</file>
@@ -79,8 +80,8 @@
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/css/Privacy%20Policy%20-%20Legal%20Terms.css</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/header.jsp</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/AddToCartFunction.js</file>
-            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/SaveCartFunction.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/DTO/User/SiteUser.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/SaveCartFunction.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/MessageAppear.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/PageGetServlet/SearchServlet.java</file>
@@ -91,13 +92,15 @@
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/DTO/Cart/CartItemList.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/css/newStyle.css</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/PageGetServlet/UserServlet.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/DAO/Order/OrderLineDAO.java</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/CartSaveServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/CheckOutOfStock.js</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/SwitchPageFunction.js</file>
-            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionDispatchServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/js/Registration%20-%20Login%20interactive.js</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionDispatchServlet.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/ServletManager/FunctionalServlet/UserSaveServlet.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/DTO/Product/ProductDetail.java</file>
             <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/web/Registration%20-%20Login.jsp</file>
+            <file>file:/C:/Users/nguye/OneDrive/Documents/NetBeansProjects/Fruitables_FruitStore/src/java/DTO/Product/ProductDetail.java</file>
         </group>
     </open-files>
 </project-private>
